@@ -82,23 +82,23 @@ lvim.plugins = {
     "0x100101/lab.nvim",
     build = "cd js && npm ci",
   },
-  {
-    "zbirenbaum/copilot.lua",
-    -- cmd = "Copilot",
-    event = "InsertEnter",
-  },
-  {
-    "zbirenbaum/copilot-cmp",
-    after = { "copilot.lua" },
-    config = function()
-      require("copilot_cmp").setup()
-    end,
-  },
-  {
-    "tzachar/cmp-tabnine",
-    event = "InsertEnter",
-    build = "./install.sh",
-  },
+  -- {
+  --   "zbirenbaum/copilot.lua",
+  --   -- cmd = "Copilot",
+  --   event = "InsertEnter",
+  -- },
+  -- {
+  --   "zbirenbaum/copilot-cmp",
+  --   after = { "copilot.lua" },
+  --   config = function()
+  --     require("copilot_cmp").setup()
+  --   end,
+  -- },
+  -- {
+  --   "tzachar/cmp-tabnine",
+  --   event = "InsertEnter",
+  --   build = "./install.sh",
+  -- },
   "MunifTanjim/nui.nvim",
   "Bryley/neoai.nvim",
   {

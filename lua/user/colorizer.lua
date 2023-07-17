@@ -13,9 +13,14 @@ colorizer.setup {
     "html",
     "astro",
     "lua",
+    "conf",
   },
   user_default_options = {
-    rgb_fn = true,
+    RRGGBBAA = true, -- #RRGGBBAA hex codes
+    hsl_fn   = true, -- CSS hsl() and hsla() functions
+    css      = true, -- Enable all CSS features: rgb_fn, hsl_fn, names, RGB, RRGGBB
+    css_fn   = true,
+    rgb_fn   = true,
     tailwind = "both",
   },
   buftypes = {

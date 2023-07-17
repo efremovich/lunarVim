@@ -29,9 +29,9 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
   },
   callback = function()
     vim.cmd [[
-      nnoremap <silent> <buffer> q :close<CR> 
-      nnoremap <silent> <buffer> <esc> :close<CR> 
-      set nobuflisted 
+      nnoremap <silent> <buffer> q :close<CR>
+      nnoremap <silent> <buffer> <esc> :close<CR>
+      set nobuflisted
     ]]
   end,
 })
@@ -41,8 +41,8 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
   callback = function()
     vim.cmd [[
       nnoremap <silent> <buffer> <m-r> :close<CR>
-      " nnoremap <silent> <buffer> <m-r> <NOP> 
-      set nobuflisted 
+      " nnoremap <silent> <buffer> <m-r> <NOP>
+      set nobuflisted
     ]]
   end,
 })
@@ -53,10 +53,10 @@ vim.api.nvim_create_autocmd({ "BufEnter" }, {
     local buf_ft = vim.bo.filetype
     if buf_ft == "" or buf_ft == nil then
       vim.cmd [[
-      nnoremap <silent> <buffer> q :close<CR> 
-      " nnoremap <silent> <buffer> <c-j> j<CR> 
-      " nnoremap <silent> <buffer> <c-k> k<CR> 
-      set nobuflisted 
+      nnoremap <silent> <buffer> q :close<CR>
+      " nnoremap <silent> <buffer> <c-j> j<CR>
+      " nnoremap <silent> <buffer> <c-k> k<CR>
+      set nobuflisted
     ]]
     end
   end,
@@ -90,7 +90,7 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
   callback = function()
     vim.opt_local.wrap = true
     vim.opt_local.spell = true
-    vim.opt_local.spelllang='en_us,ru_ru'
+    vim.opt_local.spelllang = "en_us,ru_ru"
   end,
 })
 
@@ -99,7 +99,7 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
   callback = function()
     vim.opt_local.wrap = true
     vim.opt_local.spell = true
-    vim.opt_local.spelllang='en_us,ru_ru'
+    vim.opt_local.spelllang = "en_us,ru_ru"
     vim.cmd "startinsert!"
   end,
 })
@@ -179,3 +179,73 @@ vim.api.nvim_create_autocmd({ "CursorHold" }, {
 --     vim.lsp.buf.format { async = true }
 --   end,
 -- })
+vim.api.nvim_create_autocmd({ "BufRead" }, {
+  pattern = { "*.go", "*.dart", "*.org" },
+  callback = function()
+    vim.cmd [[
+      set nofoldenable
+      set foldlevel=99999
+      set fillchars=fold:\
+      set foldtext=CustomFoldText()
+      setlocal foldmethod=expr
+      setlocal foldexpr=GetPotionFold(v:lnum)
+
+      function! GetPotionFold(lnum)
+        if getline(a:lnum) =~? '\v^\s*$'
+          return '-1'
+        endif
+
+        let this_indent = IndentLevel(a:lnum)
+        let next_indent = IndentLevel(NextNonBlankLine(a:lnum))
+
+        if next_indent == this_indent
+          return this_indent
+        elseif next_indent < this_indent
+          return this_indent
+        elseif next_indent > this_indent
+          return '>' . next_indent
+        endif
+      endfunction
+
+      function! IndentLevel(lnum)
+          return indent(a:lnum) / &shiftwidth
+      endfunction
+
+      function! NextNonBlankLine(lnum)
+        let numlines = line('$')
+        let current = a:lnum + 1
+
+        while current <= numlines
+            if getline(current) =~? '\v\S'
+                return current
+            endif
+
+            let current += 1
+        endwhile
+
+        return -2
+      endfunction
+
+      function! CustomFoldText()
+        " get first non-blank line
+        let fs = v:foldstart
+
+        while getline(fs) =~ '^\s*$' | let fs = nextnonblank(fs + 1)
+        endwhile
+
+        if fs > v:foldend
+            let line = getline(v:foldstart)
+        else
+            let line = substitute(getline(fs), '\t', repeat(' ', &tabstop), 'g')
+        endif
+
+        let w = winwidth(0) - &foldcolumn - (&number ? 8 : 0)
+        let foldSize = 1 + v:foldend - v:foldstart
+        let foldSizeStr = " " . foldSize . " lines "
+        let foldLevelStr = repeat("+--", v:foldlevel)
+        let expansionString = repeat(" ", w - strwidth(foldSizeStr.line.foldLevelStr))
+        return line . expansionString . foldSizeStr . foldLevelStr
+      endfunction
+      ]]
+  end,
+})

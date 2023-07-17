@@ -7,6 +7,7 @@ require "user.lsp.languages.emmet"
 require "user.lsp.languages.css"
 require "user.lsp.languages.dart"
 require "user.lsp.languages.md"
+require "user.lsp.languages.vue"
 
 -- lvim.lsp.diagnostics.virtual_text = false
 
@@ -20,9 +21,9 @@ vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, { "jdtls" })
 local formatters = require "lvim.lsp.null-ls.formatters"
 formatters.setup {
   { command = "google_java_format", filetypes = { "java" } },
-  { command = "stylua", filetypes = { "lua" } },
-  { command = "shfmt", filetypes = { "sh", "zsh" } },
-  { command = "prettier", filetypes = { "css" } },
+  { command = "stylua",             filetypes = { "lua" } },
+  { command = "shfmt",              filetypes = { "sh", "zsh" } },
+  { command = "prettier",           filetypes = { "css", "yaml" } },
 }
 
 -- lvim.lsp.on_attach_callback = function(client, bufnr)
@@ -30,5 +31,5 @@ formatters.setup {
 
 -- local linters = require "lvim.lsp.null-ls.linters"
 -- linters.setup {
---   { command = "eslint_d", filetypes = { "javascript" } },
+--   { command = "yamlls", filetypes = { "yaml" } },
 -- }

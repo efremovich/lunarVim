@@ -29,7 +29,8 @@ formatters.setup {
 -- lvim.lsp.on_attach_callback = function(client, bufnr)
 -- end
 
--- local linters = require "lvim.lsp.null-ls.linters"
--- linters.setup {
---   { command = "yamlls", filetypes = { "yaml" } },
--- }
+local linters = require "lvim.lsp.null-ls.linters"
+linters.setup {
+  -- { command = "yamlls", filetypes = { "yaml" } },
+  -- { command = "revive", filetypes = { "go" } },
+}

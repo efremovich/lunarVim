@@ -13,7 +13,11 @@ lvim.plugins = {
   "mfussenegger/nvim-jdtls",
   -- "karb94/neoscroll.nvim",
   "opalmay/vim-smoothie",
-  "j-hui/fidget.nvim",
+  {
+    "j-hui/fidget.nvim",
+    tag = "legacy",
+    event = "LspAttach",
+  },
   "christianchiarulli/nvim-ts-autotag",
   "kylechui/nvim-surround",
   "christianchiarulli/harpoon",
@@ -143,6 +147,26 @@ lvim.plugins = {
       require("aerial").setup()
     end,
   },
+  {
+    "iamcco/markdown-preview.nvim",
+    build = function()
+      vim.fn["mkdp#util#install"]()
+    end,
+  },
+  {
+    "Exafunction/codeium.vim",
+    event = "InsertEnter",
+    -- stylua: ignore
+    config = function()
+      vim.g.codeium_disable_bindings = 1
+      vim.keymap.set("i", "<A-m>", function() return vim.fn["codeium#Accept"]() end, { expr = true })
+      vim.keymap.set("i", "<A-f>", function() return vim.fn["codeium#CycleCompletions"](1) end, { expr = true })
+      vim.keymap.set("i", "<A-b>", function() return vim.fn["codeium#CycleCompletions"](-1) end, { expr = true })
+      vim.keymap.set("i", "<A-x>", function() return vim.fn["codeium#Clear"]() end, { expr = true })
+      vim.keymap.set("i", "<A-s>", function() return vim.fn["codeium#Complete"]() end, { expr = true })
+    end,
+  },
 }
 
+require("peek").setup {}
 require("marksman").setup {}

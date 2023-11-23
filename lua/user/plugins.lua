@@ -110,7 +110,7 @@ lvim.plugins = {
     lazy = false,
     dependencies = {
       "nvim-lua/plenary.nvim",
-      "stevearc/dressing.nvim", -- optional for vim.ui.select
+      -- "stevearc/dressing.nvim", -- optional for vim.ui.select
     },
   },
   "renerocksai/calendar-vim",
@@ -165,6 +165,10 @@ lvim.plugins = {
       vim.keymap.set("i", "<A-x>", function() return vim.fn["codeium#Clear"]() end, { expr = true })
       vim.keymap.set("i", "<A-s>", function() return vim.fn["codeium#Complete"]() end, { expr = true })
     end,
+  },
+  {
+    "stevearc/dressing.nvim",
+    opts = {},
   },
 }
 

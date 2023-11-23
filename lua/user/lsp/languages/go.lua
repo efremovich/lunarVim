@@ -6,7 +6,7 @@ formatters.setup {
 
 local linters = require "lvim.lsp.null-ls.linters"
 linters.setup {
-  { command = "revive", filetypes = { "go" } },
+  -- { command = "revive", filetypes = { "go" } },
 }
 
 vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, { "gopls" })

@@ -180,7 +180,7 @@ vim.api.nvim_create_autocmd({ "CursorHold" }, {
 --   end,
 -- })
 vim.api.nvim_create_autocmd({ "BufRead" }, {
-  pattern = { "*.go", "*.dart", "*.org" },
+  pattern = { "*.go", "*.dart", "*.org", "*.html", "*.php" },
   callback = function()
     vim.cmd [[
       set nofoldenable

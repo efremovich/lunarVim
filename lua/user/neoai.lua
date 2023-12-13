@@ -29,7 +29,7 @@ require("neoai").setup {
         .. context
     end,
   },
-  open_api_key_env = "OPENAI_API_KEY",
+  open_api_key_env = "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",
   shortcuts = {
     {
       key = "<leader>as",

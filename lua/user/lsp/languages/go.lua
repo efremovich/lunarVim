@@ -1,12 +1,12 @@
 local formatters = require "lvim.lsp.null-ls.formatters"
 formatters.setup {
   { command = "goimports", filetypes = { "go" } },
-  { command = "gofumpt",   filetypes = { "go" } },
+  { command = "gofmt", filetypes = { "go" } },
 }
 
 local linters = require "lvim.lsp.null-ls.linters"
 linters.setup {
-  -- { command = "revive", filetypes = { "go" } },
+  -- { command = "nilaway", args={"-pretty-print", "true"}, filetypes = { "go" } },
 }
 
 vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, { "gopls" })

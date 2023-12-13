@@ -2,8 +2,10 @@
 lvim.plugins = {
   "olivercederborg/poimandres.nvim",
   "bluz71/vim-moonfly-colors",
-  { "ellisonleao/gruvbox.nvim" },
+  "morhetz/gruvbox",
+  -- { "ellisonleao/gruvbox.nvim" },
   { "sainnhe/gruvbox-material" },
+  "almo7aya/neogruvbox.nvim",
   "LunarVim/synthwave84.nvim",
   "roobert/tailwindcss-colorizer-cmp.nvim",
   "lunarvim/github.nvim",
@@ -20,7 +22,8 @@ lvim.plugins = {
   },
   "christianchiarulli/nvim-ts-autotag",
   "kylechui/nvim-surround",
-  "christianchiarulli/harpoon",
+  -- "christianchiarulli/harpoon",
+  "ThePrimeagen/harpoon",
   "MattesGroeger/vim-bookmarks",
   "NvChad/nvim-colorizer.lua",
   "ghillb/cybu.nvim",
@@ -37,7 +40,7 @@ lvim.plugins = {
   "lunarvim/templeos.nvim",
   "kevinhwang91/nvim-bqf",
   "is0n/jaq-nvim",
-  -- "hrsh7th/cmp-emoji",
+  "hrsh7th/cmp-emoji",
   "ggandor/leap.nvim",
   "nacro90/numb.nvim",
   "TimUntersberger/neogit",
@@ -79,6 +82,11 @@ lvim.plugins = {
         highlight_on_key = true,
       }
     end,
+    dependencies = {
+      "MunifTanjim/nui.nvim",
+      "nvim-lua/plenary.nvim",
+      "nvim-telescope/telescope.nvim",
+    },
   },
   { "christianchiarulli/telescope-tabs", branch = "chris" },
   "monaqa/dial.nvim",
@@ -88,8 +96,11 @@ lvim.plugins = {
   },
   -- {
   --   "zbirenbaum/copilot.lua",
-  --   -- cmd = "Copilot",
+  --   cmd = "Copilot",
   --   event = "InsertEnter",
+  --   config = function()
+  --     require("copilot").setup {}
+  --   end,
   -- },
   -- {
   --   "zbirenbaum/copilot-cmp",
@@ -104,7 +115,28 @@ lvim.plugins = {
   --   build = "./install.sh",
   -- },
   "MunifTanjim/nui.nvim",
-  "Bryley/neoai.nvim",
+  {
+    "Bryley/neoai.nvim",
+    require = { "MunifTanjim/nui.nvim" },
+    cmd = {
+      "NeoAI",
+      "NeoAIOpen",
+      "NeoAIClose",
+      "NeoAIToggle",
+      "NeoAIContext",
+      "NeoAIContextOpen",
+      "NeoAIContextClose",
+      "NeoAIInject",
+      "NeoAIInjectCode",
+      "NeoAIInjectContext",
+      "NeoAIInjectContextCode",
+    },
+    config = function()
+      require("neoai").setup {
+        -- Options go here
+      }
+    end,
+  },
   {
     "akinsho/flutter-tools.nvim",
     lazy = false,
@@ -154,21 +186,72 @@ lvim.plugins = {
     end,
   },
   {
-    "Exafunction/codeium.vim",
-    event = "InsertEnter",
-    -- stylua: ignore
+    "Exafunction/codeium.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "hrsh7th/nvim-cmp",
+    },
     config = function()
-      vim.g.codeium_disable_bindings = 1
-      vim.keymap.set("i", "<A-m>", function() return vim.fn["codeium#Accept"]() end, { expr = true })
-      vim.keymap.set("i", "<A-f>", function() return vim.fn["codeium#CycleCompletions"](1) end, { expr = true })
-      vim.keymap.set("i", "<A-b>", function() return vim.fn["codeium#CycleCompletions"](-1) end, { expr = true })
-      vim.keymap.set("i", "<A-x>", function() return vim.fn["codeium#Clear"]() end, { expr = true })
-      vim.keymap.set("i", "<A-s>", function() return vim.fn["codeium#Complete"]() end, { expr = true })
+      require("codeium").setup {}
     end,
   },
+  -- {
+  --   -- "Exafunction/codeium.vim",
+  --   "Exafunction/codeium.nvim",
+  --   dependencies = {
+  --     "nvim-lua/plenary.nvim",
+  --     "hrsh7th/nvim-cmp",
+  --   },
+  --   -- event = 'BufEnter',
+  --   -- event = "InsertEnter",
+  --   -- stylua: ignore
+  --   config = function()
+  --     -- vim.g.codeium_disable_bindings = 1
+  --     -- vim.keymap.set("i", "<A-m>", function() return vim.fn["codeium#Accept"]() end, { expr = true })
+  --     -- vim.keymap.set("i", "<A-f>", function() return vim.fn["codeium#CycleCompletions"](1) end, { expr = true })
+  --     -- vim.keymap.set("i", "<A-b>", function() return vim.fn["codeium#CycleCompletions"](-1) end, { expr = true })
+  --     -- vim.keymap.set("i", "<A-x>", function() return vim.fn["codeium#Clear"]() end, { expr = true })
+  --     -- vim.keymap.set("i", "<A-s>", function() return vim.fn["codeium#Complete"]() end, { expr = true })
+  --   end,
+  -- },
   {
     "stevearc/dressing.nvim",
     opts = {},
+  },
+  -- {
+  --  url = "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+  --   config = function()
+  --     require("lsp_lines").register_lsp_virtual_lines()
+  --   end,
+  -- },
+  {
+    "nvim-neotest/neotest",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "antoinemadec/FixCursorHold.nvim",
+    },
+    requires = {
+      "nvim-neotest/neotest-go",
+      -- Your other test adapters here
+    },
+    config = function()
+      -- get neotest namespace (api call creates or returns namespace)
+      local neotest_ns = vim.api.nvim_create_namespace "neotest"
+      vim.diagnostic.config({
+        virtual_text = {
+          format = function(diagnostic)
+            local message = diagnostic.message:gsub("\n", " "):gsub("\t", " "):gsub("%s+", " "):gsub("^%s+", "")
+            return message
+          end,
+        },
+      }, neotest_ns)
+      require("neotest").setup {
+        -- your neotest config here
+        adapters = {
+          require "neotest-go",
+        },
+      }
+    end,
   },
 }
 

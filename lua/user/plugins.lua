@@ -195,44 +195,16 @@ lvim.plugins = {
       require("codeium").setup {}
     end,
   },
-  -- {
-  --   -- "Exafunction/codeium.vim",
-  --   "Exafunction/codeium.nvim",
-  --   dependencies = {
-  --     "nvim-lua/plenary.nvim",
-  --     "hrsh7th/nvim-cmp",
-  --   },
-  --   -- event = 'BufEnter',
-  --   -- event = "InsertEnter",
-  --   -- stylua: ignore
-  --   config = function()
-  --     -- vim.g.codeium_disable_bindings = 1
-  --     -- vim.keymap.set("i", "<A-m>", function() return vim.fn["codeium#Accept"]() end, { expr = true })
-  --     -- vim.keymap.set("i", "<A-f>", function() return vim.fn["codeium#CycleCompletions"](1) end, { expr = true })
-  --     -- vim.keymap.set("i", "<A-b>", function() return vim.fn["codeium#CycleCompletions"](-1) end, { expr = true })
-  --     -- vim.keymap.set("i", "<A-x>", function() return vim.fn["codeium#Clear"]() end, { expr = true })
-  --     -- vim.keymap.set("i", "<A-s>", function() return vim.fn["codeium#Complete"]() end, { expr = true })
-  --   end,
-  -- },
   {
     "stevearc/dressing.nvim",
     opts = {},
   },
-  -- {
-  --  url = "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
-  --   config = function()
-  --     require("lsp_lines").register_lsp_virtual_lines()
-  --   end,
-  -- },
   {
     "nvim-neotest/neotest",
     dependencies = {
       "nvim-lua/plenary.nvim",
       "antoinemadec/FixCursorHold.nvim",
-    },
-    requires = {
       "nvim-neotest/neotest-go",
-      -- Your other test adapters here
     },
     config = function()
       -- get neotest namespace (api call creates or returns namespace)

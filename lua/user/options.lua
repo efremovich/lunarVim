@@ -12,7 +12,7 @@ lvim.builtin.nvimtree.setup.view.side = "left"
 lvim.builtin.nvimtree.setup.renderer.icons.show.git = false
 -- lvim.builtin.nvimtree.setup.view.mappings.custom_only = true
 lvim.builtin.breadcrumbs.active = true
--- lvim.builtin.treesitter.highlight.enabled = true
+lvim.builtin.treesitter.highlight.enabled = true
 lvim.builtin.dap.active = true
 lvim.keys.term_mode = { ["<C-l>"] = false }
 lvim.builtin.cmp.active = true
@@ -134,3 +134,7 @@ lvim.builtin.nvimtree.setup.view.mappings.list = {
   { key = "<C-k>", action = "" },
   { key = "C", action = "cd" },
 }
+
+vim.g.gruvbox_material_foreground = 'mix'
+vim.g.gruvbox_material_diagnostic_text_highlight = '1'
+vim.g.gruvbox_material_diagnostic_virtual_text = 'colored'

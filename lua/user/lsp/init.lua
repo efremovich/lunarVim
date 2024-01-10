@@ -9,6 +9,7 @@ require "user.lsp.languages.dart"
 require "user.lsp.languages.md"
 require "user.lsp.languages.vue"
 require "user.lsp.languages.proto"
+require "user.lsp.languages.php"
 
 -- lvim.lsp.diagnostics.virtual_text = false
 

@@ -5,10 +5,7 @@ formatters.setup {
 }
 
 local linters = require "lvim.lsp.null-ls.linters"
-linters.setup {
-  -- { command = "nilaway", args={"-pretty-print", "true"}, filetypes = { "go" } },
-}
-
+linters.setup {}
 vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, { "gopls" })
 
 local lsp_manager = require "lvim.lsp.manager"

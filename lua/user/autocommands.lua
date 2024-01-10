@@ -86,9 +86,9 @@ vim.api.nvim_create_autocmd({ "BufEnter" }, {
 })
 
 vim.api.nvim_create_autocmd({ "FileType" }, {
-  pattern = { "gitcommit", "markdown" },
+  pattern = { "*" },
   callback = function()
-    vim.opt_local.wrap = true
+    -- vim.opt_local.wrap = true
     vim.opt_local.spell = true
     vim.opt_local.spelllang = "en_us,ru_ru"
   end,
@@ -97,7 +97,7 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
 vim.api.nvim_create_autocmd({ "FileType" }, {
   pattern = { "NeogitCommitMessage" },
   callback = function()
-    vim.opt_local.wrap = true
+    -- vim.opt_local.wrap = true
     vim.opt_local.spell = true
     vim.opt_local.spelllang = "en_us,ru_ru"
     vim.cmd "startinsert!"

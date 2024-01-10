@@ -3,17 +3,14 @@ lvim.plugins = {
   "olivercederborg/poimandres.nvim",
   "bluz71/vim-moonfly-colors",
   "morhetz/gruvbox",
-  -- { "ellisonleao/gruvbox.nvim" },
-  { "sainnhe/gruvbox-material" },
+  "sainnhe/gruvbox-material",
   "almo7aya/neogruvbox.nvim",
   "LunarVim/synthwave84.nvim",
   "roobert/tailwindcss-colorizer-cmp.nvim",
   "lunarvim/github.nvim",
   "nvim-treesitter/playground",
   "nvim-treesitter/nvim-treesitter-textobjects",
-  -- "christianchiarulli/nvim-ts-rainbow",
   "mfussenegger/nvim-jdtls",
-  -- "karb94/neoscroll.nvim",
   "opalmay/vim-smoothie",
   {
     "j-hui/fidget.nvim",
@@ -22,7 +19,6 @@ lvim.plugins = {
   },
   "christianchiarulli/nvim-ts-autotag",
   "kylechui/nvim-surround",
-  -- "christianchiarulli/harpoon",
   "ThePrimeagen/harpoon",
   "MattesGroeger/vim-bookmarks",
   "NvChad/nvim-colorizer.lua",
@@ -94,49 +90,7 @@ lvim.plugins = {
     "0x100101/lab.nvim",
     build = "cd js && npm ci",
   },
-  -- {
-  --   "zbirenbaum/copilot.lua",
-  --   cmd = "Copilot",
-  --   event = "InsertEnter",
-  --   config = function()
-  --     require("copilot").setup {}
-  --   end,
-  -- },
-  -- {
-  --   "zbirenbaum/copilot-cmp",
-  --   after = { "copilot.lua" },
-  --   config = function()
-  --     require("copilot_cmp").setup()
-  --   end,
-  -- },
-  -- {
-  --   "tzachar/cmp-tabnine",
-  --   event = "InsertEnter",
-  --   build = "./install.sh",
-  -- },
   "MunifTanjim/nui.nvim",
-  {
-    "Bryley/neoai.nvim",
-    require = { "MunifTanjim/nui.nvim" },
-    cmd = {
-      "NeoAI",
-      "NeoAIOpen",
-      "NeoAIClose",
-      "NeoAIToggle",
-      "NeoAIContext",
-      "NeoAIContextOpen",
-      "NeoAIContextClose",
-      "NeoAIInject",
-      "NeoAIInjectCode",
-      "NeoAIInjectContext",
-      "NeoAIInjectContextCode",
-    },
-    config = function()
-      require("neoai").setup {
-        -- Options go here
-      }
-    end,
-  },
   {
     "akinsho/flutter-tools.nvim",
     lazy = false,
@@ -202,8 +156,8 @@ lvim.plugins = {
   {
     "nvim-neotest/neotest",
     dependencies = {
-      "nvim-lua/plenary.nvim",
-      "antoinemadec/FixCursorHold.nvim",
+      -- "nvim-lua/plenary.nvim",
+      -- "antoinemadec/FixCursorHold.nvim",
       "nvim-neotest/neotest-go",
     },
     config = function()

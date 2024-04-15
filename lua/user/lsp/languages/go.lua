@@ -13,6 +13,10 @@ lsp_manager.setup("golangci_lint_ls", {
   on_init = require("lvim.lsp").common_on_init,
   capabilities = require("lvim.lsp").common_capabilities(),
 })
+-- lsp_manager.setup("nilaway", {
+--   on_init = require("lvim.lsp").common_on_init,
+--   capabilities = require("lvim.lsp").common_capabilities(),
+-- })
 
 lsp_manager.setup("gopls", {
   on_attach = function(client, bufnr)

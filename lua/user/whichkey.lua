@@ -133,16 +133,16 @@ lvim.builtin.which_key.mappings["t"] = {
   o = { "<cmd>lua require('neotest').output.open({ enter = true })<cr>", "Output" },
 }
 -- lvim.builtin.cmp.enabled = false
--- lvim.builtin.which_key.mappings["o"] = {
---   name = "Options",
---   c = { "<cmd>lua lvim.builtin.cmp.active = false<cr>", "Completion off" },
---   C = { "<cmd>lua lvim.builtin.cmp.active = true<cr>", "Completion on" },
--- w = { '<cmd>lua require("user.functions").toggle_option("wrap")<cr>', "Wrap" },
--- r = { '<cmd>lua require("user.functions").toggle_option("relativenumber")<cr>', "Relative" },
--- l = { '<cmd>lua require("user.functions").toggle_option("cursorline")<cr>', "Cursorline" },
--- s = { '<cmd>lua require("user.functions").toggle_option("spell")<cr>', "Spell" },
--- t = { '<cmd>lua require("user.functions").toggle_tabline()<cr>', "Tabline" },
--- }
+lvim.builtin.which_key.mappings["o"] = {
+  name = "Options",
+  c = { "<cmd>lua lvim.builtin.cmp.active = false<cr>", "Completion off" },
+  C = { "<cmd>lua lvim.builtin.cmp.active = true<cr>", "Completion on" },
+w = { '<cmd>lua require("user.functions").toggle_option("wrap")<cr>', "Wrap" },
+r = { '<cmd>lua require("user.functions").toggle_option("relativenumber")<cr>', "Relative" },
+l = { '<cmd>lua require("user.functions").toggle_option("cursorline")<cr>', "Cursorline" },
+s = { '<cmd>lua require("user.functions").toggle_option("spell")<cr>', "Spell" },
+t = { '<cmd>lua require("user.functions").toggle_tabline()<cr>', "Tabline" },
+}
 
 lvim.builtin.which_key.mappings["n"] = {
   name = "Notes",

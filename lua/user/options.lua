@@ -20,8 +20,8 @@ lvim.builtin.cmp.active = true
 lvim.builtin.cmp.sources = {
   { name = "codeium" },
 }
-lvim.builtin.cmp.cmdline.enable = false
-lvim.builtin.cmp.window.documentation = false
+lvim.builtin.cmp.cmdline.enable = true
+lvim.builtin.cmp.window.documentation = true
 lvim.builtin.cmp.window.documentation = {
   border = "rounded",
   winhighlight = "NormalFloat:Pmenu,NormalFloat:Pmenu,CursorLine:PmenuSel,Search:None",

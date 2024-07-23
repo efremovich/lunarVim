@@ -34,7 +34,7 @@ lvim.plugins = {
   "lvimuser/lsp-inlayhints.nvim",
   "lunarvim/darkplus.nvim",
   "lunarvim/templeos.nvim",
-  "kevinhwang91/nvim-bqf",
+  {"kevinhwang91/nvim-bqf", version = false},
   "is0n/jaq-nvim",
   "hrsh7th/cmp-emoji",
   "ggandor/leap.nvim",
@@ -142,9 +142,9 @@ lvim.plugins = {
   {
     "Exafunction/codeium.nvim",
     config = function()
-      require("codeium").setup({
+      require("codeium").setup {
         enable_chat = true,
-      })
+      }
       -- Change '<C-g>' here to any keycode you like.
       vim.keymap.set("i", "<C-g>", function()
         return vim.fn["codeium#Accept"]()
@@ -164,44 +164,6 @@ lvim.plugins = {
       "hrsh7th/nvim-cmp",
     },
   },
-  -- {
-  --   "Exafunction/codeium.vim",
-  --   init = function()
-  --     vim.g.codeium_disable_bindings = 1
-  --     vim.g.codeium_filetypes = {
-  --       rust = true,
-  --       go = true,
-  --       lua = true,
-  --       markdown = true,
-  --       norg = true,
-  --       zsh = true,
-  --       bash = true,
-  --       txt = true,
-  --       js = true,
-  --     }
-  --   end,
-  --   keys = {
-  --     { mode = { "n" }, "<leader>ce", ":Codeium Enable<CR>",  { silent = true } },
-  --     { mode = { "n" }, "<leader>cd", ":Codeium Disable<CR>", { silent = true } },
-  --   },
-  --   config = function()
-  --     -- stylua: ignore start
-  --     vim.keymap.set("i", "<C-y>", function() return vim.fn["codeium#Accept"]() end, { expr = true })
-  --     vim.keymap.set("i", "<M-]>", function() return vim.fn["codeium#CycleCompletions"](1) end, { expr = true })
-  --     vim.keymap.set("i", "<M-[>", function() return vim.fn["codeium#CycleCompletions"](-1) end, { expr = true })
-  --     vim.keymap.set("i", "<C-e>", function() return vim.fn["codeium#Clear"]() end, { expr = true })
-  --     -- stylua: ignore end
-  --   end,
-  -- },
-  -- {
-  --   "sourcegraph/sg.nvim",
-  --   dependencies = {
-  --     "nvim-lua/plenary.nvim",
-  --     -- "nvim-telescope/telescope.nvim",
-  --   },
-  --   -- If you have a recent version of lazy.nvim, you don't need to add this!
-  --   build = "nvim -l build/init.lua",
-  -- },
   {
     "stevearc/dressing.nvim",
     opts = {},
@@ -239,6 +201,12 @@ lvim.plugins = {
     config = function()
       require("lsp_lines").setup()
     end,
+  },
+  { "RRethy/vim-illuminate" },
+  { "nvim-neotest/nvim-nio" },
+  {
+    'wthollingsworth/pomodoro.nvim',
+    dependencies = 'MunifTanjim/nui.nvim'
   },
 }
 

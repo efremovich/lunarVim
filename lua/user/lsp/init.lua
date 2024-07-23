@@ -19,7 +19,7 @@ lvim.builtin.treesitter.ensure_installed = {
   "java",
 }
 
-vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, { "jdtls", "intelephense" })
+vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, { "jdtls", "intelephense", "snyk_ls" })
 
 local formatters = require "lvim.lsp.null-ls.formatters"
 formatters.setup {

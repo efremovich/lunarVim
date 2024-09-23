@@ -1,16 +1,13 @@
 -- Additional Plugins
 lvim.plugins = {
   "olivercederborg/poimandres.nvim",
-  "bluz71/vim-moonfly-colors",
-  "morhetz/gruvbox",
+  -- Theme
   "sainnhe/gruvbox-material",
   "almo7aya/neogruvbox.nvim",
-  "LunarVim/synthwave84.nvim",
   "roobert/tailwindcss-colorizer-cmp.nvim",
   "lunarvim/github.nvim",
   "nvim-treesitter/playground",
   "nvim-treesitter/nvim-treesitter-textobjects",
-  "mfussenegger/nvim-jdtls",
   "opalmay/vim-smoothie",
   {
     "j-hui/fidget.nvim",
@@ -26,7 +23,16 @@ lvim.plugins = {
   "moll/vim-bbye",
   "folke/todo-comments.nvim",
   "windwp/nvim-spectre",
-  "f-person/git-blame.nvim",
+  {
+    "f-person/git-blame.nvim",
+    opts = {
+      -- your configuration comes here
+      -- for example
+      enabled = true, -- if you want to enable the plugin
+      message_template = " <author> • <date> • <summary> ", -- template for the blame message, check the Message template section for more options
+      date_format = "%d.%m.%Y %H:%M:%S", -- template for the date, check Date format section for more options
+    },
+  },
   "ruifm/gitlinker.nvim",
   "mattn/vim-gist",
   "mattn/webapi-vim",
@@ -34,9 +40,9 @@ lvim.plugins = {
   "lvimuser/lsp-inlayhints.nvim",
   "lunarvim/darkplus.nvim",
   "lunarvim/templeos.nvim",
-  {"kevinhwang91/nvim-bqf", version = false},
+  { "kevinhwang91/nvim-bqf",             version = false },
   "is0n/jaq-nvim",
-  "hrsh7th/cmp-emoji",
+  -- "hrsh7th/cmp-emoji",
   "ggandor/leap.nvim",
   "nacro90/numb.nvim",
   "TimUntersberger/neogit",
@@ -145,19 +151,6 @@ lvim.plugins = {
       require("codeium").setup {
         enable_chat = true,
       }
-      -- Change '<C-g>' here to any keycode you like.
-      vim.keymap.set("i", "<C-g>", function()
-        return vim.fn["codeium#Accept"]()
-      end, { expr = true, silent = true })
-      vim.keymap.set("i", "<c-;>", function()
-        return vim.fn["codeium#CycleCompletions"](1)
-      end, { expr = true, silent = true })
-      vim.keymap.set("i", "<c-,>", function()
-        return vim.fn["codeium#CycleCompletions"](-1)
-      end, { expr = true, silent = true })
-      vim.keymap.set("i", "<c-x>", function()
-        return vim.fn["codeium#Clear"]()
-      end, { expr = true, silent = true })
     end,
     dependencies = {
       "nvim-lua/plenary.nvim",
@@ -199,6 +192,9 @@ lvim.plugins = {
   {
     url = "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
     config = function()
+      vim.diagnostic.config({
+        virtual_text = false,
+      })
       require("lsp_lines").setup()
     end,
   },
@@ -208,6 +204,16 @@ lvim.plugins = {
     'wthollingsworth/pomodoro.nvim',
     dependencies = 'MunifTanjim/nui.nvim'
   },
+  {
+    "catppuccin/nvim",
+    name = "catppuccin",
+    priority = 1000
+  },
+  {
+    'kevinhwang91/nvim-ufo',
+    dependencies = 'kevinhwang91/promise-async'
+  },
+  -- { "mfussenegger/nvim-dap" },
 }
 
 require("peek").setup {}

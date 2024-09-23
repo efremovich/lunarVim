@@ -4,18 +4,12 @@ formatters.setup {
   { command = "gofmt", filetypes = { "go" } },
 }
 
--- local linters = require "lvim.lsp.null-ls.linters"
--- linters.setup { command = "golangci_lint_ls", filetypes = { "go" } }
 vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, { "gopls" })
 local lsp_manager = require "lvim.lsp.manager"
 lsp_manager.setup("golangci_lint_ls", {
   on_init = require("lvim.lsp").common_on_init,
   capabilities = require("lvim.lsp").common_capabilities(),
 })
--- lsp_manager.setup("nilaway", {
---   on_init = require("lvim.lsp").common_on_init,
---   capabilities = require("lvim.lsp").common_capabilities(),
--- })
 
 lsp_manager.setup("gopls", {
   on_attach = function(client, bufnr)

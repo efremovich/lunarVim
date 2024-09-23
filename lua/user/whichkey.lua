@@ -90,9 +90,9 @@ lvim.builtin.which_key.mappings["l"] = {
   a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
   -- c = { "<cmd>lua require('copilot.suggestion').toggle_auto_trigger()<cr>", "Get Capabilities" },
   c = { "<cmd>lua require('user.lsp').server_capabilities()<cr>", "Get Capabilities" },
-  d = { "<cmd>TroubleToggle<cr>", "Diagnostics" },
+  d = { "<cmd>Trouble<cr>", "Diagnostics" },
   w = {
-    "<cmd>TroubleToggle workspace_diagnostics<cr>",
+    "<cmd>Trouble diagnostics<cr>",
     "Workspace Diagnostics",
   },
   f = { "<cmd>lua vim.lsp.buf.format({ async = true })<cr>", "Format" },
@@ -112,9 +112,9 @@ lvim.builtin.which_key.mappings["l"] = {
   v = { "<cmd>lua require('lsp_lines').toggle()<cr>", "Virtual Text" },
   l = { "<cmd>lua vim.lsp.codelens.run()<cr>", "CodeLens Action" },
   o = { "<cmd>AerialToggle!<cr>", "Outline" },
-  q = { "<cmd>TroubleToggle quickfix<cr>", "Quickfix" },
+  q = { "<cmd>Trouble quickfix<cr>", "Quickfix" },
   r = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" },
-  R = { "<cmd>TroubleToggle lsp_references<cr>", "References" },
+  R = { "<cmd>Trouble lsp_references<cr>", "References" },
   s = { "<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols" },
   S = {
     "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>",
